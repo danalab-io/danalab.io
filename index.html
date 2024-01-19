@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Company - Empowering Your Business</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caros:bold">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const contentElements = document.querySelectorAll('section .section_content, section .section_header');
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            contentElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+    <style>
+        body {
+            font-family: 'Caros', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: #000;
+        }
+
+        header {
+            background-color: #304871;
+            text-align: center;
+            padding: 1em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 40vh; 
+            box-shadow: 0px 10px 50px rgb(48 73 115 / 67%);
+        }
+
+        header img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        nav {
+            background-color: #304871d1;
+            text-align: center;
+            padding: 1em;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0px 10px 50px rgb(48 73 115 / 95%);
+            font-size: 2em;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 15px;
+            font-weight: bold;
+            border-radius: 5px; 
+        }
+
+        nav :hover {
+            background-color: #304871; /* Change to the desired blue color */
+        }
+
+        nav a:hover {
+            background-color: #304871; /* Change to the desired blue color */
+        }
+
+        @media screen and (max-width: 1508px) {
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 15px 15px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            nav {
+                display: none;
+            }
+        }
+
+        section {
+            flex: 1;
+            padding: 150px 0 150px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: #304871;
+        }
+
+        .section_header {
+            text-align: left;
+            font-size: 4em;
+            margin: 0 auto 50px auto;
+            max-width: 80%;
+            color: #304871;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+
+        @media screen and (max-width: 768px) {
+            .section_header {
+                font-size: 3.25em; 
+            }
+        }
+
+
+        section:nth-child(even) .section_header {
+            color: #fff;
+        }
+
+        section .section_content {
+            text-align: center;
+            margin: 20px auto;
+            max-width: 80%; 
+            min-height: 250px;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+        
+        body > section:nth-child(1) .section_content {
+            opacity: 1;
+        }
+
+        section .columns {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 30px 0;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px 5px rgba(48, 73, 115, 0.2);
+            min-height: 350px;
+        }
+
+        section:nth-child(even) .columns {  
+            background-color: #fff;
+        }
+
+        @media screen and (max-width: 900px) {
+            .columns {
+                flex-direction: column;
+            }
+        }
+
+        section .column {
+            position: relative;
+            flex: 0 1 calc(30% - 20px); 
+            margin: 10px;
+            text-align: left; 
+            min-height: 300px;
+        }
+
+        section .column h3 {
+            color: #666; 
+            padding-left: 20px;
+            font-size: 2em;
+            min-height: 72px;
+        }
+
+        @media screen and (max-width: 900px) {
+            section .column h3 {
+                text-align: center;
+            }
+        }
+
+        section .column p {
+            padding-left: 20px; 
+            min-height: 100px;
+            font-size: 1.5em;
+        }
+        
+        section:nth-child(even) .column p {
+            color: #000;
+        }
+
+        @media screen and (max-width: 768px) {
+            section .column p {
+                padding: 0 20px 20px 20px; 
+            }
+        }
+
+        section .column.right::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            bottom: -20px;
+            left: -45px;
+            width: 3px; 
+
+            background: linear-gradient(to right, rgba(48, 72, 113, 0.2), transparent); 
+        }
+
+        section .column.left::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            bottom: -20px;
+            right: -45px;
+            width: 3px; 
+            background: linear-gradient(to left, rgba(48, 72, 113, 0.2), transparent); 
+        }
+
+        @media screen and (max-width: 900px) {
+       
+            section .column.left::after {
+                left: 20px; 
+                bottom: 20px;
+                right: 20px;
+                height: 3px;
+                background: linear-gradient(to bottom, rgba(48, 72, 113, 0.2), transparent);
+                top: auto; 
+                width: auto;
+            }
+
+            section .column.right::before {
+                top: -20px;
+                left: 20px;
+                right: 20px;
+                height: 3px;
+                background: linear-gradient(to top, rgba(48, 72, 113, 0.2), transparent);
+                bottom: auto;
+                width: auto;
+            }
+        }
+
+        section .cases_img {
+            width: 100%;
+        }
+        
+        section .services.column[class*="sv-"]::after {
+            content: '';
+            position: absolute;
+        }
+
+        section .services.column[class*="sv-"]::before {
+            content: '';
+            position: absolute;
+        }
+
+        section .services.column.sv-first::after {
+            top: -20px;
+            bottom: -20px;
+            right: -45px;
+            width: 3px; 
+            background: linear-gradient(to left, rgba(48, 72, 113, 0.2), transparent); 
+        }
+
+        section .services.column.sv-third::before {
+            top: -20px;
+            bottom: -20px;
+            left: -45px;
+            width: 3px; 
+
+            background: linear-gradient(to right, rgba(48, 72, 113, 0.2), transparent); 
+        }
+
+
+        @media screen and (max-width: 900px) {
+       
+            section .services.column[class*="sv-"]::after {
+                left: 20px; 
+                bottom: 20px;
+                right: 20px;
+                height: 3px;
+                background: linear-gradient(to bottom, rgba(48, 72, 113, 0.2), transparent);
+                top: auto; 
+                width: auto;
+            }
+
+            section .services.column:nth-child(1) {
+                order: 1
+            }
+
+            section .services.column:nth-child(2) {
+                order: 2
+            }
+
+            section .services.column:nth-child(3) {
+                order: 3
+            }
+
+            section .services.column:nth-child(4) {
+                order: 4
+            }
+
+            section .services.column:nth-child(5) {
+                order: 6
+            }
+
+            section .services.column:nth-child(6) {
+                order: 5
+            }
+       }
+
+        section .services_img {
+            text-align: center;
+        }
+
+        section .services_img img {
+            max-width: 300px;
+            width: 90%;
+        }
+
+        .last_section {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid white;
+        }
+        
+
+        @media screen and (max-width: 768px) {
+            .last_section {
+                flex-direction: column;
+            }
+        }
+
+        .contact {
+            padding: 150px 0 150px 0;
+        }
+
+        section .contact-info {
+            display: flex;
+            justify-content: space-around;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px 5px rgba(48, 73, 115, 0.2);
+            flex-direction: column;
+            padding: 55px 30px;
+        }
+
+        section .contact-info div {
+            padding: 5px 0;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        section .contact-info a {
+            color: #304871;
+            text-decoration: none;
+        }
+
+        section .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        section .contact-info p {
+            margin: 5px;
+        }
+
+        section .contact_map {
+            max-width: 300px;
+            width: 90%;
+            box-shadow: 0px 5px 10px 5px rgba(48, 73, 115, 0.2);
+            border-radius: 200px;
+        }
+
+        section .linkedin-logo {
+            width: 50px; /* Adjust the width as needed */
+            height: auto;
+            vertical-align: middle; /* Align the logo vertically in the line */
+            margin-right: 5px; /* Add some space between the logo and text */
+        }
+
+        section .clients {
+            display: flex;
+            justify-content: space-around;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 5px 10px 5px rgba(48, 73, 115, 0.2);
+            flex-direction: row;
+            padding: 30px 30px;
+            flex-wrap: wrap;
+            background-color: #304871;
+        }
+
+        section .client {
+            padding: 10px 10px;
+        }
+
+        section .client_img {
+            max-width: 300px;
+            width: 90%;
+            box-shadow: 0px 2px 5px 2px rgba(48, 73, 115, 0.2);
+            border-radius: 200px;
+        }
+
+        footer {
+            background-color: #304871;
+            text-align: center;
+            padding: 2em;   
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="danalab.png" alt="Company Logo">
+    </header>
+    <nav>
+        <a href="#ai_opportunities">AI Opportunities</a>
+        <a href="#ai_adoption">AI Adoption</a>
+        <a href="#works">Works</a>
+        <a href="#our_services">Our services</a>
+        <a href="#top_clients">Top Clients</a>
+        <a href="#contact_us">Contact Us</a>
+    </nav>
+
+
+    <section id="ai_opportunities">
+        <h2 class="section_header">AI Opportunities</h2>
+        <div class="section_content">
+            <div class="columns">
+                <div class="column left">
+                    <h3>Increased Efficiency and Automation</h3>
+                    <p>AI can streamline and automate various tasks and processes, leading to significant cost savings and increased operational efficiency.</p>
+                </div>
+                <div class="column">
+                    <h3>Data-Driven Insights</h3>
+                    <p>AI enables organizations to extract valuable insights from large datasets, providing a competitive advantage.</p>
+                </div>
+                <div class="column right">
+                    <h3>Personalization and Customer Engagement</h3>
+                    <p>AI can be used to create personalized customer experiences through recommendation systems, chatbots, and natural language processing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai_adoption">
+        <h2 class="section_header">AI Adoption</h2>
+        <div class="section_content">
+            <div class="columns">
+                <div class="column left">
+                    <h3>Unclear Capabilities</h3>
+                    <p>Crafting an effective AI strategy is not an easy path. The ever-evolving nature of AI technologies, coupled with the unique challenges within each organization, makes the process intricate and demanding.</p>
+                </div>
+                <div class="column">
+                    <h3>Lack of Expertise</h3>
+                    <p>AI comprises a set of complex techniques that require specific knowledge for their correct development.</p>
+                </div>
+                <div class="column right">
+                    <h3>Ethical Concerns</h3>
+                    <p>Bias, privacy compliance, and transparency are among the key concerns affecting the development and usage of AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works">
+        <h2 class="section_header">Works.</h2>
+      
+        <img class="cases_img" src="case1.png" alt="Company Logo">
+        <img class="cases_img" src="case2.png" alt="Company Logo">
+        <img class="cases_img" src="case3.png" alt="Company Logo">
+    </section>
+
+    
+    <section id="our_services">
+        <h2 class="section_header">Our Services</h2>
+        <div class="section_content">
+            <div class="columns">
+                <div class="services column sv-first">
+                    <h3>Consultancy</h3>
+                    <p>Working closely together, we help you identify AI opportunities to improve your business by defining an AI adoption strategy.</p>
+                </div>
+                <div class="services column sv-second">
+                    <h3>Applied Research</h3>
+                    <p>Sometimes solutions are not an off-the-shelf product. We explore the state of the art of AI to find the best approach to solve your problems. We go the extra mile.</p>
+                </div>
+                <div class="services column sv-third">
+                    <h3>Proof of Concept</h3>
+                    <p>Once we have a clear initial idea of what you need, we evaluate it’s feasibility by building a PoC in no time.</p>
+                </div>
+                <div class="services column sv-fourth">
+                    <h3>Intelligent Development</h3>
+                    <p>We guide the development of your end product. If you want to build it, we assist you in the process. If you want us to build it, we have the right team to make it happen.</p>
+                </div>
+                <div class="services column fifth">
+                    <div class="services_img">
+                        <img src="services.png">
+                    </div>
+                 </div>
+                <div class="services column sv-sixth">
+                    <h3>Staff Augmentation</h3>
+                    <p>We help you build larger and smarter teams by connecting you with AI experts we trust.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="last_section">
+        <section id="top_clients">
+            <h2 class="section_header">Top Clients</h2>
+            <div class="section_content">
+                <div class="clients">
+                    <div class="client">
+                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
+                            <img class="client_img" src="kpmg.png">
+                        </a>    
+                    </div>
+                    <div class="client">
+                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
+                            <img class="client_img" src="topazium.png">
+                        </a>
+                    </div>
+                    <div class="client">
+                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
+                            <img class="client_img" src="smartway.png">
+                        </a>
+                    </div>
+                    <div class="client">
+                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
+                            <img class="client_img" src="brokerware.png">
+                        </a>    
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <section id="contact_us" class="contact">
+            <h2 class="section_header">Contact Us</h2>
+            <div class="section_content">
+                <div class="contact-info">
+                    <div>
+                        <img class="contact_map" src="map.png">
+                        <p>Montevideo, Uruguay</p>
+                    </div>
+                    <div>
+                        <label for="phone">Phone:</label>
+                        <p><a>(+598) 93 380 249</a></p>
+                    </div>
+                    <div>
+                        <label for="email">Email:</label>
+                        <p><a href="mailto:hello@danalab.io">hello@danalab.io</a></p>
+                    </div>
+                    <div>
+                        <label for="linkedin">LinkedIn:</label>
+                        <p><a href="https://uy.linkedin.com/company/danalab" target="_blank">
+                            <img src="linkedin.png" alt="LinkedIn Logo" class="linkedin-logo">
+                        </a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+    <footer>
+        <p>&copy; 2024 DanaLab. All rights reserved.</p>
+    </footer>
+</body>
+</html>

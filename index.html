@@ -124,7 +124,8 @@
             justify-content: center;
             box-shadow: 0px 10px 50px rgb(48 73 115 / 95%);
             font-size: 2em;
-            padding: 20px;  
+            padding: 20px;
+            border-bottom: 1px solid white;
         }
 
         nav a {
@@ -171,7 +172,7 @@
         }
 
         body > section:nth-of-type(1) { 
-            background: linear-gradient(to top, #304871, #30487100)
+            background: linear-gradient(to top, #304871, #363843)
         }
 
         body > section:nth-of-type(2) { 
@@ -234,6 +235,10 @@
             color: #304871;
             opacity: 0;
             transition: opacity 0.8s ease, transform 0.8s ease-in-out; 
+        }
+
+        body > section:nth-of-type(1) .section_header  {
+            color: #fff;
         }
         
         @media screen and (max-width: 1450px)  {
@@ -740,7 +745,7 @@
 
 
         footer {
-            background-color: #304871;
+            background-color: #363843;
             text-align: center;
             padding: 2em;
             color: #fff;
@@ -939,6 +944,7 @@
 
     <footer>
         <p>&copy; 2024 DanaLab. All rights reserved.</p>
+        <p>This site was created by prompting an LLM.</p>
     </footer>
 </body>
 

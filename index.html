@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Company - Empowering Your Business</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Caros:bold">
+    <link href="https://fonts.cdnfonts.com/css/caros" rel="stylesheet">
     <script>
+
         document.addEventListener("DOMContentLoaded", function () {
             const navLinks = document.querySelectorAll("nav a");
 
@@ -25,8 +27,27 @@
             });
         });
 
-        document.addEventListener("DOMContentLoaded", function() {
-            const contentElements = document.querySelectorAll('section .column, section .section_header');
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const contentElements = document.querySelectorAll("section .section_header");
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            contentElements.forEach(element => {
+                observer.observe(element);       
+            });
+        });
+
+       
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const contentElements = document.querySelectorAll('section .column');
 
             const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
@@ -40,6 +61,35 @@
                 observer.observe(element);
             });
         });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const contentElements = document.querySelectorAll(".cases_img");
+
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !entry.target.dataset.animated) {
+                        const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
+                        const translateXValue = index % 2 === 0 ? '-75%' : '75%';
+
+                        entry.target.style.transform = `translateX(${translateXValue})`;
+                        entry.target.dataset.animated = true;
+
+                        setTimeout(() => {
+                            entry.target.style.transition = 'opacity 0.5s ease-in-out, transform 0.8s ease-in-out';
+                            entry.target.style.transform = 'translateX(0%)';
+                            entry.target.style.opacity = '1';
+                        }, 50);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            contentElements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transition = 'opacity 0.5s ease-in-out'; 
+                observer.observe(element);
+            });
+        });
+
     </script>
     <style>
         body {
@@ -53,12 +103,11 @@
         header {
             background-color: #304871;
             text-align: center;
-            padding: 1em;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 40vh; 
+            height: 40vh;
             box-shadow: 0px 10px 50px rgb(48 73 115 / 67%);
         }
 
@@ -69,13 +118,13 @@
         }
 
         nav {
-            background-color: #304871d1;
+            background-color: #37363f;
             text-align: center;
-            padding: 1em;
             display: flex;
             justify-content: center;
             box-shadow: 0px 10px 50px rgb(48 73 115 / 95%);
             font-size: 2em;
+            padding: 20px;  
         }
 
         nav a {
@@ -83,12 +132,12 @@
             color: #fff;
             padding: 10px 15px;
             font-weight: bold;
-            border-radius: 5px; 
+            border-radius: 5px;
             transition: transform 0.1s ease-in-out;
         }
 
         nav :hover {
-            background-color: #304871; 
+            background-color: #304871;
         }
 
         nav a:hover {
@@ -104,6 +153,10 @@
             nav a {
                 padding: 15px 15px;
             }
+
+            nav a:hover {
+                transform: scale(1.01);
+            }
         }
 
         @media screen and (max-width: 768px) {
@@ -114,78 +167,105 @@
 
         section {
             flex: 1;
-            padding: 150px 0 150px 0;
-            transition: transform 0.3s ease-in-out;
+            padding: 10px 0 150px 0;
         }
 
-        section:not(:nth-last-child(-n+2)):hover {
+        body > section:nth-of-type(1) { 
+            background: linear-gradient(to top, #304871, #30487100)
+        }
+
+        body > section:nth-of-type(1):hover .section_header {
+            transform: translate(calc(50vw - 700px), 0) scale(1.3);
+        }
+
+        body > section:nth-of-type(2):hover .section_header {
+            transform: translate(calc(50vw - 700px), 0) scale(1.3);
+        }
+
+        body > section:nth-of-type(3):hover .section_header {
+            transform: translate(calc(50vw - 700px), 0) scale(1.3);
+        }
+
+        body > section:nth-of-type(4):hover .section_header {
+            transform: translate(calc(50vw - 700px), 0) scale(1.3);
+        }
+
+        section:not(:nth-last-child(-n+2)):hover .section_container {
             transform: scale(1.05);
         }
 
-        section:not(:nth-last-child(-n+2)):hover .section_header {
-            transform: translate(450px, 0) scale(1.3);
-        }
-
-        section:nth-last-child(-n+2):hover .section_header {
-            transform: translate(200px, 0) scale(1.3);
-        }
-                        
         section:nth-child(even) {
             background-color: #304871;
         }
 
+        body > section:nth-of-type(3) { 
+            padding-bottom: 10px;
+        }
+
+        section:last-child {
+            background-color: #37363f;
+        }
+
+        section .section_container {
+            margin: 20px auto;
+            max-width: 70%;
+            transition: transform 0.3s ease-in-out;
+        }
+
         .section_header {
             text-align: left;
-            font-size: 4em;
-            margin: 0 auto 0 auto;
-            max-width: 80%;
+            font-size: 64px;
             color: #304871;
             opacity: 0;
-            transition: opacity 0.8s ease;
-            transition: transform 0.8s ease-in-out;
+            transition: opacity 0.8s ease, transform 0.8s ease-in-out; 
         }
 
-        @media screen and (max-width: 1350px) {
-
-            section:not(:nth-last-child(-n+2)):hover .section_header {
-                transform: translate(250px, 0) scale(1.3);
+        @media screen and (max-width: 1024px) {
+            section:not(:nth-last-child(-n+2)):hover {
+                transform: scale(1.01);
+            }
+            
+            body > section:nth-of-type(1):hover .section_header {
+                transform: scale(1.3);
             }
 
-            section:nth-last-child(-n+2):hover .section_header {
-                transform: translate(50px, 0) scale(1.1);
-            }
-        }
-
-        @media screen and (max-width: 1000px) {
-
-            section:not(:nth-last-child(-n+2)):hover .section_header {
-                transform: translate(150px, 0) scale(1.3);
+            body > section:nth-of-type(2):hover .section_header {
+                transform: scale(1.3);
             }
 
-            section:nth-last-child(-n+2):hover .section_header {
-                transform: translate(50px, 0) scale(1.1);
+            body > section:nth-of-type(3):hover .section_header {
+                transform: scale(1.3);
+            }
+
+            body > section:nth-of-type(4):hover .section_header {
+                transform: scale(1.3);
+            }
+
+            .last_section > section:nth-of-type(1):hover .section_header {
+                transform: scale(1.3);
+            }
+
+            .last_section > section:nth-of-type(2):hover .section_header {
+                transform: scale(1.3);
+            }
+
+            section .section_header {
+                font-size: 54px;
+                text-align: center;
             }
         }
 
         @media screen and (max-width: 768px) {
-            section {
-                text-align: center; 
+             section .section_header {
+                font-size: 44px;
+                text-align: center;
             }
+        }
 
+        @media screen and (max-width: 375px) {
             section .section_header {
-                font-size: 3.25em; 
-            }
-
-            section:not(:nth-last-child(-n+2)):hover {
-                transform: scale(1.01);
-            }
-
-            section:not(:nth-last-child(-n+2)):hover .section_header {
-                transform: none;
-            }
-
-            section:nth-last-child(-n+2):hover .section_header {
-                transform: none;
+                font-size: 32px;
+                text-align: center;
             }
         }
 
@@ -196,9 +276,9 @@
 
         section .section_content {
             text-align: center;
-            margin: 20px auto;
-            max-width: 80%; 
             min-height: 250px;
+            background-color: #fff;
+            border-radius: 10px;
         }
 
         section .columns {
@@ -211,7 +291,7 @@
             min-height: 350px;
         }
 
-        section:nth-child(even) .columns {  
+        section:nth-child(even) .columns {
             background-color: #fff;
         }
 
@@ -223,18 +303,18 @@
 
         section .column {
             position: relative;
-            flex: 0 1 calc(30% - 20px); 
+            flex: 0 1 calc(30% - 20px);
             margin: 10px;
-            text-align: left; 
+            text-align: left;
             min-height: 300px;
             opacity: 0.3;
             transition: opacity 0.8s ease;
         }
 
         section .column h3 {
-            color: #666; 
-            padding-left: 20px;
-            font-size: 2em;
+            color: #666;
+            padding: 0 20px 0 20px;
+            font-size: 25px;
             min-height: 72px;
         }
 
@@ -245,18 +325,18 @@
         }
 
         section .column p {
-            padding-left: 20px; 
+            padding: 0 20px 0 20px;
             min-height: 100px;
             font-size: 1.5em;
         }
-        
+
         section:nth-child(even) .column p {
             color: #000;
         }
 
         @media screen and (max-width: 768px) {
             section .column p {
-                padding: 0 20px 20px 20px; 
+                padding: 0 20px 20px 20px;
             }
         }
 
@@ -266,9 +346,9 @@
             top: -20px;
             bottom: -20px;
             left: -45px;
-            width: 3px; 
-
-            background: linear-gradient(to right, rgba(48, 72, 113, 0.2), transparent); 
+            width: 3px;
+            background: linear-gradient(to right, rgba(48, 72, 113, 0.2), transparent);
+            margin-left: 16px;
         }
 
         section .column.left::after {
@@ -277,20 +357,22 @@
             top: -20px;
             bottom: -20px;
             right: -45px;
-            width: 3px; 
-            background: linear-gradient(to left, rgba(48, 72, 113, 0.2), transparent); 
+            width: 3px;
+            background: linear-gradient(to left, rgba(48, 72, 113, 0.2), transparent);
+            margin-right: 16px;
         }
 
         @media screen and (max-width: 900px) {
-       
+
             section .column.left::after {
-                left: 20px; 
+                left: 20px;
                 bottom: 20px;
                 right: 20px;
                 height: 3px;
                 background: linear-gradient(to bottom, rgba(48, 72, 113, 0.2), transparent);
-                top: auto; 
+                top: auto;
                 width: auto;
+                margin-right: 0;
             }
 
             section .column.right::before {
@@ -301,13 +383,15 @@
                 background: linear-gradient(to top, rgba(48, 72, 113, 0.2), transparent);
                 bottom: auto;
                 width: auto;
+                margin-left: 0;
             }
         }
 
         section .cases_img {
             width: 100%;
+            opacity: 0.3;
         }
-        
+
         section .services.column[class*="sv-"]::after {
             content: '';
             position: absolute;
@@ -322,29 +406,29 @@
             top: -20px;
             bottom: -20px;
             right: -45px;
-            width: 3px; 
-            background: linear-gradient(to left, rgba(48, 72, 113, 0.2), transparent); 
+            width: 3px;
+            background: linear-gradient(to left, rgba(48, 72, 113, 0.2), transparent);
         }
 
         section .services.column.sv-third::before {
             top: -20px;
             bottom: -20px;
             left: -45px;
-            width: 3px; 
+            width: 3px;
 
-            background: linear-gradient(to right, rgba(48, 72, 113, 0.2), transparent); 
+            background: linear-gradient(to right, rgba(48, 72, 113, 0.2), transparent);
         }
 
 
         @media screen and (max-width: 900px) {
-       
+
             section .services.column[class*="sv-"]::after {
-                left: 20px; 
+                left: 20px;
                 bottom: 20px;
                 right: 20px;
                 height: 3px;
                 background: linear-gradient(to bottom, rgba(48, 72, 113, 0.2), transparent);
-                top: auto; 
+                top: auto;
                 width: auto;
             }
 
@@ -371,7 +455,7 @@
             section .services.column:nth-child(6) {
                 order: 5
             }
-       }
+        }
 
         section .services_img {
             text-align: center;
@@ -387,16 +471,16 @@
             flex-direction: row;
             border: 1px solid white;
         }
-        
 
-        @media screen and (max-width: 768px) {
+
+        @media screen and (max-width: 1024px) {
             .last_section {
                 flex-direction: column;
             }
         }
 
         .contact {
-            padding: 150px 0 150px 0;
+            padding: 10px 0 150px 0;
         }
 
         section .contact-info {
@@ -452,10 +536,13 @@
         }
 
         section .linkedin_logo {
-            width: 50px; /* Adjust the width as needed */
+            width: 50px;
+            /* Adjust the width as needed */
             height: auto;
-            vertical-align: middle; /* Align the logo vertically in the line */
-            margin-right: 5px; /* Add some space between the logo and text */
+            vertical-align: middle;
+            /* Align the logo vertically in the line */
+            margin-right: 5px;
+            /* Add some space between the logo and text */
             transition: transform 0.3s ease-in-out;
         }
 
@@ -489,17 +576,20 @@
             width: 90%;
             box-shadow: 0px 2px 5px 2px rgba(48, 73, 115, 0.2);
             border-radius: 200px;
-           
+
         }
+
+
 
         footer {
             background-color: #304871;
             text-align: center;
-            padding: 2em;   
+            padding: 2em;
             color: #fff;
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="danalab.png" alt="Company Logo">
@@ -515,137 +605,164 @@
 
 
     <section id="ai_opportunities">
-        <h2 class="section_header">AI Opportunities</h2>
-        <div class="section_content">
-            <div class="columns">
-                <div class="column left">
-                    <h3>Increased Efficiency and Automation</h3>
-                    <p>AI can streamline and automate various tasks and processes, leading to significant cost savings and increased operational efficiency.</p>
-                </div>
-                <div class="column">
-                    <h3>Data-Driven Insights</h3>
-                    <p>AI enables organizations to extract valuable insights from large datasets, providing a competitive advantage.</p>
-                </div>
-                <div class="column right">
-                    <h3>Personalization and Customer Engagement</h3>
-                    <p>AI can be used to create personalized customer experiences through recommendation systems, chatbots, and natural language processing.</p>
+        <div class="section_container">
+            <h2 class="section_header">AI Opportunities.</h2>
+            <div class="section_content">
+                <div class="columns">
+                    <div class="column left">
+                        <h3>Increased Efficiency and Automation</h3>
+                        <p>AI can streamline and automate various tasks and processes, leading to significant cost
+                            savings and increased operational efficiency.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Data-Driven Insights</h3>
+                        <p>AI enables organizations to extract valuable insights from large datasets, providing a
+                            competitive advantage.</p>
+                    </div>
+                    <div class="column right">
+                        <h3>Personalization and Customer Engagement</h3>
+                        <p>AI can be used to create personalized customer experiences through recommendation systems,
+                            chatbots, and natural language processing.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="ai_adoption">
-        <h2 class="section_header">AI Adoption</h2>
-        <div class="section_content">
-            <div class="columns">
-                <div class="column left">
-                    <h3>Unclear Capabilities</h3>
-                    <p>Crafting an effective AI strategy is not an easy path. The ever-evolving nature of AI technologies, coupled with the unique challenges within each organization, makes the process intricate and demanding.</p>
-                </div>
-                <div class="column">
-                    <h3>Lack of Expertise</h3>
-                    <p>AI comprises a set of complex techniques that require specific knowledge for their correct development.</p>
-                </div>
-                <div class="column right">
-                    <h3>Ethical Concerns</h3>
-                    <p>Bias, privacy compliance, and transparency are among the key concerns affecting the development and usage of AI.</p>
+        <div class="section_container">
+            <h2 class="section_header">AI Adoption.</h2>
+            <div class="section_content">
+                <div class="columns">
+                    <div class="column left">
+                        <h3>Unclear Capabilities</h3>
+                        <p>Crafting an effective AI strategy is not an easy path. The ever-evolving nature of AI
+                            technologies, coupled with the unique challenges within each organization, makes the process
+                            intricate and demanding.</p>
+                    </div>
+                    <div class="column">
+                        <h3>Lack of Expertise</h3>
+                        <p>AI comprises a set of complex techniques that require specific knowledge for their correct
+                            development.</p>
+                    </div>
+                    <div class="column right">
+                        <h3>Ethical Concerns</h3>
+                        <p>Bias, privacy compliance, and transparency are among the key concerns affecting the
+                            development and usage of AI.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="works">
-        <h2 class="section_header">Works.</h2>
-      
+        <div class="section_container">
+            <h2 class="section_header">Works.</h2>
+        </div>
         <img class="cases_img" src="case1.png" alt="Company Logo">
         <img class="cases_img" src="case2.png" alt="Company Logo">
         <img class="cases_img" src="case3.png" alt="Company Logo">
+      
     </section>
 
-    
+
     <section id="our_services">
-        <h2 class="section_header">Our Services</h2>
-        <div class="section_content">
-            <div class="columns">
-                <div class="services column sv-first">
-                    <h3>Consultancy</h3>
-                    <p>Working closely together, we help you identify AI opportunities to improve your business by defining an AI adoption strategy.</p>
-                </div>
-                <div class="services column sv-second">
-                    <h3>Applied Research</h3>
-                    <p>Sometimes solutions are not an off-the-shelf product. We explore the state of the art of AI to find the best approach to solve your problems. We go the extra mile.</p>
-                </div>
-                <div class="services column sv-third">
-                    <h3>Proof of Concept</h3>
-                    <p>Once we have a clear initial idea of what you need, we evaluate it’s feasibility by building a PoC in no time.</p>
-                </div>
-                <div class="services column sv-fourth">
-                    <h3>Intelligent Development</h3>
-                    <p>We guide the development of your end product. If you want to build it, we assist you in the process. If you want us to build it, we have the right team to make it happen.</p>
-                </div>
-                <div class="services column fifth">
-                    <div class="services_img">
-                        <img src="services.png">
+        <div class="section_container">
+            <h2 class="section_header">Our Services.</h2>
+            <div class="section_content">
+                <div class="columns">
+                    <div class="services column sv-first">
+                        <h3>Consultancy</h3>
+                        <p>Working closely together, we help you identify AI opportunities to improve your business by
+                            defining an AI adoption strategy.</p>
                     </div>
-                 </div>
-                <div class="services column sv-sixth">
-                    <h3>Staff Augmentation</h3>
-                    <p>We help you build larger and smarter teams by connecting you with AI experts we trust.</p>
+                    <div class="services column sv-second">
+                        <h3>Applied Research</h3>
+                        <p>Sometimes solutions are not an off-the-shelf product. We explore the state of the art of AI
+                            to
+                            find the best approach to solve your problems. We go the extra mile.</p>
+                    </div>
+                    <div class="services column sv-third">
+                        <h3>Proof of Concept</h3>
+                        <p>Once we have a clear initial idea of what you need, we evaluate it’s feasibility by building
+                            a
+                            PoC in no time.</p>
+                    </div>
+                    <div class="services column sv-fourth">
+                        <h3>Intelligent Development</h3>
+                        <p>We guide the development of your end product. If you want to build it, we assist you in the
+                            process. If you want us to build it, we have the right team to make it happen.</p>
+                    </div>
+                    <div class="services column fifth">
+                        <div class="services_img">
+                            <img src="services.png">
+                        </div>
+                    </div>
+                    <div class="services column sv-sixth">
+                        <h3>Staff Augmentation</h3>
+                        <p>We help you build larger and smarter teams by connecting you with AI experts we trust.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <div class="last_section">
+
         <section id="top_clients">
-            <h2 class="section_header">Top Clients</h2>
-            <div class="section_content">
-                <div class="clients">
-                    <div class="client">
-                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
-                            <img class="client_img" src="kpmg.png">
-                        </a>    
-                    </div>
-                    <div class="client">
-                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
-                            <img class="client_img" src="topazium.png">
-                        </a>
-                    </div>
-                    <div class="client">
-                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
-                            <img class="client_img" src="smartway.png">
-                        </a>
-                    </div>
-                    <div class="client">
-                        <a href="https://uy.linkedin.com/company/danalab" target="_blank">
-                            <img class="client_img" src="brokerware.png">
-                        </a>    
+            <div class="section_container">
+                <h2 class="section_header">Top Clients.</h2>
+                <div class="section_content">
+                    <div class="clients">
+                        <div class="client">
+                            <a href="https://kpmg.com/uy" target="_blank">
+                                <img class="client_img" src="kpmg.png">
+                            </a>
+                        </div>
+                        <div class="client">
+                            <a href="https://topazium.com/" target="_blank">
+                                <img class="client_img" src="topazium.png">
+                            </a>
+                        </div>
+                        <div class="client">
+                            <a href="https://www.onsmartway.com/" target="_blank">
+                                <img class="client_img" src="smartway.png">
+                            </a>
+                        </div>
+                        <div class="client">
+                            <a href="http://www.brokerware.com.uy/" target="_blank">
+                                <img class="client_img" src="brokerware.png">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
-    
+
         <section id="contact_us" class="contact">
-            <h2 class="section_header">Contact Us</h2>
-            <div class="section_content">
-                <div class="contact-info">
-                    <div class="contact_office">
-                        <img class="contact_map" src="map.png">
-                        <p>Montevideo, Uruguay</p>
-                    </div>
-                    <div>
-                        <label for="phone">Phone:</label>
-                        <p><a>(+598) 93 380 249</a></p>
-                    </div>
-                    <div>
-                        <label for="email">Email:</label>
-                        <p><a href="mailto:hello@danalab.io">hello@danalab.io</a></p>
-                    </div>
-                    <div>
-                        <label for="linkedin">LinkedIn:</label>
-                        <p><a href="https://uy.linkedin.com/company/danalab" target="_blank">
-                            <img src="linkedin.png" alt="LinkedIn Logo" class="linkedin_logo">
-                        </a></p>
+            <div class="section_container">
+                <h2 class="section_header">Contact Us.</h2>
+                <div class="section_content">
+                    <div class="contact-info">
+                        <a href="https://www.google.com/maps/place/Montevideo,+Departamento+de+Montevideo/"
+                            target="_blank" class="contact_office">
+                            <img class="contact_map" src="map.png">
+                            <p>Montevideo, Uruguay</p>
+                        </a>
+                        <div>
+                            <label for="phone">Phone:</label>
+                            <p><a>(+598) 93 380 249</a></p>
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <p><a href="mailto:hello@danalab.io">hello@danalab.io</a></p>
+                        </div>
+                        <div>
+                            <label for="linkedin">LinkedIn:</label>
+                            <p><a href="https://uy.linkedin.com/company/danalab" target="_blank">
+                                    <img src="linkedin.png" alt="LinkedIn Logo" class="linkedin_logo">
+                                </a></p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -657,4 +774,5 @@
         <p>&copy; 2024 DanaLab. All rights reserved.</p>
     </footer>
 </body>
+
 </html>

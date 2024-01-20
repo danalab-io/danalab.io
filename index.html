@@ -490,7 +490,58 @@
 
         section .cases_img {
             width: 100%;
+            height: 600px;
             opacity: 0.3;
+            color: #fff;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        section .cases_img h3 {
+            font-size: 64px;
+            padding: 70px 70px 0 70px;
+            text-align: left;
+            margin-block: 0;
+        }
+        
+        section .cases_img p {
+            font-size: 22px;
+            padding: 0 70px;
+        }
+
+        @media screen and (max-width: 768px) {
+            section .cases_img h3 {
+                font-size: 44px;
+                padding: 70px 40px 0 40px;
+            }
+
+            section .cases_img p {
+                padding: 0 40px;
+            }
+        }
+
+        @media screen and (max-width: 375px) {
+            section .cases_img h3 {
+                font-size: 34px;
+                padding: 70px 20px 0 20px;
+            }
+
+            section .cases_img p {
+                padding: 0 20px;
+            }
+        }
+
+        section .cases_img_1 {
+            background-image: url('case1.jpg');
+        }
+
+        section .cases_img_2 {
+            background-image: url('case2.jpg');
+        }
+
+        section .cases_img_3 {
+            background-image: url('case3.jpg');
         }
 
         section .services.column[class*="sv-"]::after {
@@ -760,9 +811,18 @@
         <div class="section_container">
             <h2 class="section_header">Works.</h2>
         </div>
-        <img class="cases_img" src="case1.png" alt="Company Logo">
-        <img class="cases_img" src="case2.png" alt="Company Logo">
-        <img class="cases_img" src="case3.png" alt="Company Logo">
+        <div class="cases_img cases_img_1">
+            <h3>Medical Diagnosis</h3>
+            <p>We help medical organizations in the development of AI based medical assitance diagnosis products. Integrating state-of-the-art data privacy and model explainability techniques along the process.</p>
+        </div>
+        <div class="cases_img cases_img_2">
+            <h3>Conversational Data</h3>
+            <p>We create intelligent processing pipelines to help our clients seamlessly integrate paperwork into their data workflows, transforming laborious manual tasks into milliseconds of computing processing.</p>
+        </div>
+        <div class="cases_img cases_img_3">
+            <h3>Satellite Analysis</h3>
+            <p>We help clients estimate key agronomic indicators from satellite data. This process involves analyzing big volumes of data from complex datasources including satelite imagery to get the best predictions.</p>
+        </div>
       
     </section>
 

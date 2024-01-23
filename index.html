@@ -69,19 +69,24 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !entry.target.dataset.animated) {
                         const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
-                        const translateXValue = index % 2 === 0 ? '-75%' : '75%';
-
-                        entry.target.style.transform = `translateX(${translateXValue})`;
+                     
+                        if (window.innerWidth < 768) {
+                            const translateValue = '25%';
+                            entry.target.style.transform = `translateY(${translateValue})`;
+                        } else {
+                            const translateValue = index % 2 === 0 ? '-75%' : '75%';
+                            entry.target.style.transform = `translateX(${translateValue})`;
+                        }
                         entry.target.dataset.animated = true;
 
                         setTimeout(() => {
                             entry.target.style.transition = 'opacity 0.5s ease-in-out, transform 0.8s ease-in-out';
-                            entry.target.style.transform = 'translateX(0%)';
+                            entry.target.style.transform = 'translateX(0%) translateY(0%)';
                             entry.target.style.opacity = '1';
                         }, 50);
                     }
                 });
-            }, { threshold: 0.5 });
+            }, { threshold: window.innerWidth  < 768 ? 0.025 : 0.5 });
 
             contentElements.forEach(element => {
                 element.style.opacity = '0';
@@ -94,24 +99,47 @@
 
         function update() {
 
-            var myPath00 = document.getElementById('myPath00');
+            /*a*/
+            var myPath00 = document.getElementById('myPathA_00');
             updateVarAndRedraw(myPath00, 0.25, 0, 30, 55, 45);
-            var myPath01 = document.getElementById('myPath01');
+            var myPath01 = document.getElementById('myPathA_01');
             updateVarAndRedraw(myPath01, -0.25, 120, 30, 55, 45);
 
-            var myPath10 = document.getElementById('myPath10');
+            var myPath10 = document.getElementById('myPathA_10');
             updateVarAndRedraw(myPath10, -0.25, 0, 50, 95, 45);
-            var myPath11 = document.getElementById('myPath11');
+            var myPath11 = document.getElementById('myPathA_11');
             updateVarAndRedraw(myPath11, 0.25, 200, 50, 95, 45);
 
-            var myPath20 = document.getElementById('myPath20');
+            var myPath20 = document.getElementById('myPathA_20');
             updateVarAndRedraw(myPath20, 0.25, 0, 25, 70, 45);
-            var myPath21 = document.getElementById('myPath21');
+            var myPath21 = document.getElementById('myPathA_21');
             updateVarAndRedraw(myPath21, -0.25, 100, 25, 70, 45)
 
-            var myPath30 = document.getElementById('myPath30');
+            var myPath30 = document.getElementById('myPathA_30');
             updateVarAndRedraw(myPath30, -0.25, 0, 40, 45, 45);
-            var myPath31 = document.getElementById('myPath31');
+            var myPath31 = document.getElementById('myPathA_31');
+            updateVarAndRedraw(myPath31, 0.25, 160, 40, 45, 45);
+
+
+            /*b*/
+            var myPath00 = document.getElementById('myPathB_00');
+            updateVarAndRedraw(myPath00, 0.25, 0, 30, 55, 45);
+            var myPath01 = document.getElementById('myPathB_01');
+            updateVarAndRedraw(myPath01, -0.25, 120, 30, 55, 45);
+
+            var myPath10 = document.getElementById('myPathB_10');
+            updateVarAndRedraw(myPath10, -0.25, 0, 50, 95, 45);
+            var myPath11 = document.getElementById('myPathB_11');
+            updateVarAndRedraw(myPath11, 0.25, 200, 50, 95, 45);
+
+            var myPath20 = document.getElementById('myPathB_20');
+            updateVarAndRedraw(myPath20, 0.25, 0, 25, 70, 45);
+            var myPath21 = document.getElementById('myPathB_21');
+            updateVarAndRedraw(myPath21, -0.25, 100, 25, 70, 45)
+
+            var myPath30 = document.getElementById('myPathB_30');
+            updateVarAndRedraw(myPath30, -0.25, 0, 40, 45, 45);
+            var myPath31 = document.getElementById('myPathB_31');
             updateVarAndRedraw(myPath31, 0.25, 160, 40, 45, 45);
         }
 
@@ -815,19 +843,10 @@
         }
 
         /*WAVE*/
-        .separator {
+        .wave-container {
             background-color: #304871;
             height: 50px;
             position: relative;
-        }
-
-        .background-div {
-            background-color: #304871;
-            top: 0;
-            width: 100%;
-            height: 25px;
-            position: absolute;
-            z-index: 1;
         }
 
         .foreground-div {
@@ -838,6 +857,12 @@
             top: 50%;
             z-index: 2;
         }
+
+        .b {
+            height: 100%;
+            top: 0%;
+        }
+
 
         svg {
             position: absolute;
@@ -857,7 +882,7 @@
         }
 
 
-        .cont {
+        .wavesA {
             overflow: hidden;
             position: absolute;
             width: 100%;
@@ -865,7 +890,15 @@
             top: 5%;
         }
 
-        .cont0 {
+        .wavesB {
+            overflow: hidden;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: -45%;
+        }
+
+        .wave0 {
             width: 100%;
             height: 100%;
             animation: moveSinWave0 84s linear infinite;
@@ -875,7 +908,7 @@
             top: 0;
         }
 
-        .cont1 {
+        .wave1 {
             width: 100%;
             height: 100%;
             animation: moveSinWave1 83s linear infinite;
@@ -885,7 +918,7 @@
             top: 0;
         }
 
-        .cont2 {
+        .wave2 {
             width: 100%;
             height: 100%;
             animation: moveSinWave2 82s linear infinite;
@@ -895,7 +928,7 @@
             top: 0;
         }
 
-        .cont3 {
+        .wave3 {
             width: 100%;
             height: 100%;
             animation: moveSinWave3 81s linear infinite;
@@ -961,38 +994,36 @@
         <img src="danalab.png" alt="Company Logo">
     </header>
 
-    <div class="separator">
-
-        <div class="background-div"></div>
+    <div class="wave-container"">
         <div class="foreground-div"></div>
-        <div class="cont">
+        <div class="wavesA">
 
-            <div class="cont0">
+            <div class="wave0">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPath00" style="stroke: none;"></path>
-                    <path  id="myPath01" style="stroke: none;"></path>
+                    <path id="myPathA_00" style="stroke: none;"></path>
+                    <path  id="myPathA_01" style="stroke: none;"></path>
                 </svg>
             </div>
-            <div class="cont1">
+            <div class="wave1">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPath10" style="stroke: none;"></path>
-                    <path id="myPath11" style="stroke: none;"></path>
+                    <path id="myPathA_10" style="stroke: none;"></path>
+                    <path id="myPathA_11" style="stroke: none;"></path>
                 </svg>
             </div>
-            <div class="cont2">
+            <div class="wave2">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPath20" style="stroke: none;"></path>
-                    <path id="myPath21" style="stroke: none;"></path>
+                    <path id="myPathA_20" style="stroke: none;"></path>
+                    <path id="myPathA_21" style="stroke: none;"></path>
                 </svg>
             </div>
-            <div class="cont3">
+            <div class="wave3">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPath30" style="stroke: none;"></path>
-                    <path id="myPath31" style="stroke: none;"></path>
+                    <path id="myPathA_30" style="stroke: none;"></path>
+                    <path id="myPathA_31" style="stroke: none;"></path>
                 </svg>
             </div>
 
@@ -1083,6 +1114,43 @@
 
     </section>
 
+    <div class="wave-container">
+
+        <div class="foreground-div b"></div>
+       <div class="wavesB">
+
+            <div class="wave0">
+                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                    <path id="myPathB_00" style="stroke: none;"></path>
+                    <path  id="myPathB_01" style="stroke: none;"></path>
+                </svg>
+            </div>
+            <div class="wave1">
+                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                    <path id="myPathB_10" style="stroke: none;"></path>
+                    <path id="myPathB_11" style="stroke: none;"></path>
+                </svg>
+            </div>
+            <div class="wave2">
+                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                    <path id="myPathB_20" style="stroke: none;"></path>
+                    <path id="myPathB_21" style="stroke: none;"></path>
+                </svg>
+            </div>
+            <div class="wave3">
+                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                    <path id="myPathB_30" style="stroke: none;"></path>
+                    <path id="myPathB_31" style="stroke: none;"></path>
+                </svg>
+            </div>
+
+        </div>
+
+    </div>
 
     <section id="our_services">
         <div class="section_container">

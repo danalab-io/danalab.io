@@ -94,18 +94,25 @@
 
         function update() {
 
-            var path1 = document.getElementById('myPath1');
-            updateVarAndRedraw(path1, -0.25, 0, 50, 75, 45);
-            var path2 = document.getElementById('myPath2');
-            updateVarAndRedraw(path2, 0.25, 200, 50, 75, 45);
-            var path3 = document.getElementById('myPath3');
-            updateVarAndRedraw(path3, 0.25, 0, 25, 50, 45);
-            var path4 = document.getElementById('myPath4');
-            updateVarAndRedraw(path4, -0.25, 100, 25, 50, 45)
-            var path5 = document.getElementById('myPath5');
-            updateVarAndRedraw(path5, 0.25, 0, 40, 25, 45);
-            var path6 = document.getElementById('myPath6');
-            updateVarAndRedraw(path6, -0.25, 160, 40, 25, 45);
+            var myPath00 = document.getElementById('myPath00');
+            updateVarAndRedraw(myPath00, 0.25, 0, 30, 55, 45);
+            var myPath01 = document.getElementById('myPath01');
+            updateVarAndRedraw(myPath01, -0.25, 120, 30, 55, 45);
+
+            var myPath10 = document.getElementById('myPath10');
+            updateVarAndRedraw(myPath10, -0.25, 0, 50, 95, 45);
+            var myPath11 = document.getElementById('myPath11');
+            updateVarAndRedraw(myPath11, 0.25, 200, 50, 95, 45);
+
+            var myPath20 = document.getElementById('myPath20');
+            updateVarAndRedraw(myPath20, 0.25, 0, 25, 70, 45);
+            var myPath21 = document.getElementById('myPath21');
+            updateVarAndRedraw(myPath21, -0.25, 100, 25, 70, 45)
+
+            var myPath30 = document.getElementById('myPath30');
+            updateVarAndRedraw(myPath30, -0.25, 0, 40, 45, 45);
+            var myPath31 = document.getElementById('myPath31');
+            updateVarAndRedraw(myPath31, 0.25, 160, 40, 45, 45);
         }
 
         function updateVarAndRedraw(path, wave, start, length, amp, y) {
@@ -224,6 +231,7 @@
         section {
             flex: 1;
             padding: 10px 0 150px 0;
+            overflow: hidden;
         }
 
         body>section:nth-of-type(1) {
@@ -271,7 +279,7 @@
         }
 
         body>section:nth-of-type(3) {
-            padding-bottom: 10px;
+            padding-bottom: 0px;
         }
 
         section:last-child {
@@ -287,13 +295,13 @@
         .section_header {
             text-align: left;
             font-size: 64px;
-            color: #304871;
+            color: #fff;
             opacity: 0;
             transition: opacity 0.8s ease, transform 0.8s ease-in-out;
         }
 
-        body>section:nth-of-type(1) .section_header {
-            color: #fff;
+        .last_section>section:nth-of-type(1) .section_header {
+            color: #304871;
         }
 
         @media screen and (max-width: 1450px) {
@@ -857,11 +865,20 @@
             top: 5%;
         }
 
-        .cont1 {
-            overflow: hidden;
+        .cont0 {
             width: 100%;
             height: 100%;
-            animation: moveSinWave 83s linear infinite;
+            animation: moveSinWave0 84s linear infinite;
+            background: transparent;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+        }
+
+        .cont1 {
+            width: 100%;
+            height: 100%;
+            animation: moveSinWave1 83s linear infinite;
             background: transparent;
             position: absolute;
             z-index: 3;
@@ -869,7 +886,6 @@
         }
 
         .cont2 {
-            overflow: hidden;
             width: 100%;
             height: 100%;
             animation: moveSinWave2 82s linear infinite;
@@ -880,7 +896,6 @@
         }
 
         .cont3 {
-            overflow: hidden;
             width: 100%;
             height: 100%;
             animation: moveSinWave3 81s linear infinite;
@@ -891,15 +906,27 @@
         }
 
 
-        @keyframes moveSinWave {
+        @keyframes moveSinWave0 {
 
             0%,
             100% {
-                transform: translateX(-15%);
+                transform: translateX(110%);
             }
 
             50% {
-                transform: translateX(105%);
+                transform: translateX(0%);
+            }
+        }
+
+        @keyframes moveSinWave1 {
+
+            0%,
+            100% {
+                transform: translateX(90%);
+            }
+
+            50% {
+                transform: translateX(0%);
             }
         }
 
@@ -907,11 +934,11 @@
 
             0%,
             100% {
-                transform: translateX(-25%);
+                transform: translateX(-10%);
             }
 
             50% {
-                transform: translateX(105%);
+                transform: translateX(90%);
             }
         }
 
@@ -919,11 +946,11 @@
 
             0%,
             100% {
-                transform: translateX(-35%);
+                transform: translateX(0);
             }
 
             50% {
-                transform: translateX(105%);
+                transform: translateX(90%);
             }
         }
     </style>
@@ -940,25 +967,32 @@
         <div class="foreground-div"></div>
         <div class="cont">
 
+            <div class="cont0">
+                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                    <path id="myPath00" style="stroke: none;"></path>
+                    <path  id="myPath01" style="stroke: none;"></path>
+                </svg>
+            </div>
             <div class="cont1">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path class="wave1" id="myPath1" style="stroke: none;"></path>
-                    <path class="wave1" id="myPath2" style="stroke: none;"></path>
+                    <path id="myPath10" style="stroke: none;"></path>
+                    <path id="myPath11" style="stroke: none;"></path>
                 </svg>
             </div>
             <div class="cont2">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path class="wave2" id="myPath3" style="stroke: none;"></path>
-                    <path class="wave2" id="myPath4" style="stroke: none;"></path>
+                    <path id="myPath20" style="stroke: none;"></path>
+                    <path id="myPath21" style="stroke: none;"></path>
                 </svg>
             </div>
             <div class="cont3">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path class="wave3" id="myPath5" style="stroke: none;"></path>
-                    <path class="wave3" id="myPath6" style="stroke: none;"></path>
+                    <path id="myPath30" style="stroke: none;"></path>
+                    <path id="myPath31" style="stroke: none;"></path>
                 </svg>
             </div>
 

@@ -69,7 +69,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting && !entry.target.dataset.animated) {
                         const index = Array.from(entry.target.parentNode.children).indexOf(entry.target);
-                     
+
                         if (window.innerWidth < 768) {
                             const translateValue = '25%';
                             entry.target.style.transform = `translateY(${translateValue})`;
@@ -86,7 +86,7 @@
                         }, 50);
                     }
                 });
-            }, { threshold: window.innerWidth  < 768 ? 0.025 : 0.5 });
+            }, { threshold: window.innerWidth < 768 ? 0.025 : 0.5 });
 
             contentElements.forEach(element => {
                 element.style.opacity = '0';
@@ -850,7 +850,7 @@
         }
 
         .foreground-div {
-            background-color: #363843;     
+            background-color: #363843;
             width: 100%;
             height: 50%;
             position: absolute;
@@ -995,39 +995,39 @@
     </header>
 
     <div class="wave-container"">
-        <div class="foreground-div"></div>
-        <div class="wavesA">
+        <div class=" foreground-div"></div>
+    <div class="wavesA">
 
-            <div class="wave0">
-                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
-                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPathA_00" style="stroke: none;"></path>
-                    <path  id="myPathA_01" style="stroke: none;"></path>
-                </svg>
-            </div>
-            <div class="wave1">
-                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
-                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPathA_10" style="stroke: none;"></path>
-                    <path id="myPathA_11" style="stroke: none;"></path>
-                </svg>
-            </div>
-            <div class="wave2">
-                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
-                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPathA_20" style="stroke: none;"></path>
-                    <path id="myPathA_21" style="stroke: none;"></path>
-                </svg>
-            </div>
-            <div class="wave3">
-                <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
-                    <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
-                    <path id="myPathA_30" style="stroke: none;"></path>
-                    <path id="myPathA_31" style="stroke: none;"></path>
-                </svg>
-            </div>
-
+        <div class="wave0">
+            <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                <path id="myPathA_00" style="stroke: none;"></path>
+                <path id="myPathA_01" style="stroke: none;"></path>
+            </svg>
         </div>
+        <div class="wave1">
+            <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                <path id="myPathA_10" style="stroke: none;"></path>
+                <path id="myPathA_11" style="stroke: none;"></path>
+            </svg>
+        </div>
+        <div class="wave2">
+            <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                <path id="myPathA_20" style="stroke: none;"></path>
+                <path id="myPathA_21" style="stroke: none;"></path>
+            </svg>
+        </div>
+        <div class="wave3">
+            <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
+                <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
+                <path id="myPathA_30" style="stroke: none;"></path>
+                <path id="myPathA_31" style="stroke: none;"></path>
+            </svg>
+        </div>
+
+    </div>
 
     </div>
 
@@ -1117,13 +1117,13 @@
     <div class="wave-container">
 
         <div class="foreground-div b"></div>
-       <div class="wavesB">
+        <div class="wavesB">
 
             <div class="wave0">
                 <svg viewBox="0 0 400 100" preserveAspectRatio="xMinYMin meet">
                     <rect x="0" y="0" width="100%" height="100%" style="stroke: none;" />
                     <path id="myPathB_00" style="stroke: none;"></path>
-                    <path  id="myPathB_01" style="stroke: none;"></path>
+                    <path id="myPathB_01" style="stroke: none;"></path>
                 </svg>
             </div>
             <div class="wave1">
@@ -1159,25 +1159,19 @@
                 <div class="columns">
                     <div class="services column sv-first">
                         <h3>Consultancy</h3>
-                        <p>Working closely together, we help you identify AI opportunities to improve your business by
-                            defining an AI adoption strategy.</p>
+                        <p>Working closely together, we help you identify AI opportunities to improve your business by defining an AI adoption strategy.</p>
                     </div>
                     <div class="services column sv-second">
                         <h3>Applied Research</h3>
-                        <p>Sometimes solutions are not an off-the-shelf product. We explore the state of the art of AI
-                            to
-                            find the best approach to solve your problems. We go the extra mile.</p>
+                        <p>Sometimes solutions are not an off-the-shelf product. We explore the state of the art of AI to find the best approach to solve your problems. We go the extra mile.</p>
                     </div>
                     <div class="services column sv-third">
-                        <h3>Proof of Concept</h3>
-                        <p>Once we have a clear initial idea of what you need, we evaluate it’s feasibility by building
-                            a
-                            PoC in no time.</p>
+                        <h3>Data Privacy First</h3>
+                        <p>We safeguard your sensitive information with cutting-edge privacy techniques, ensuring robust data protection without compromising analytical insights.</p>
                     </div>
                     <div class="services column sv-fourth">
-                        <h3>Intelligent Development</h3>
-                        <p>We guide the development of your end product. If you want to build it, we assist you in the
-                            process. If you want us to build it, we have the right team to make it happen.</p>
+                        <h3>Proof of Concept</h3>
+                        <p>Once we have a clear initial idea of what you need, we evaluate it’s feasibility by building a PoC in no time.</p>
                     </div>
                     <div class="services column fifth">
                         <div class="services_img">
@@ -1185,8 +1179,9 @@
                         </div>
                     </div>
                     <div class="services column sv-sixth">
-                        <h3>Staff Augmentation</h3>
-                        <p>We help you build larger and smarter teams by connecting you with AI experts we trust.</p>
+                        <h3>Intelligent Development</h3>
+                        <p>We guide the development of your end product. If you want to build it, we assist you in the
+                            process. If you want us to build it, we have the right team to make it happen.</p>
                     </div>
                 </div>
             </div>
